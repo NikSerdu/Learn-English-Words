@@ -1,0 +1,85 @@
+.card {
+  margin-top: 50px;
+  height: 150px;
+  width: 20vw;
+  border-radius: 2em;
+  padding: 20px;
+  background: linear-gradient(45deg, #042b33, #325258);
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card svg {
+  margin-top: auto;
+  margin-left: auto;
+  color: rgb(129, 7, 7);
+  font-size: 1.5em;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.violet {
+  background: linear-gradient(45deg, #9a13d7, #11c7e9);
+}
+
+.orange {
+  background: linear-gradient(45deg, #609f44, #f30000);
+}
+
+.red {
+  background: linear-gradient(45deg, #9c1825, #e2745c);
+}
+
+.card__header {
+  width: 1px;
+  float: left;
+  color: #fff;
+  font-size: 1.5em;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.card__label {
+  font-weight: 100;
+  color: #fff;
+}
+
+.card:hover {
+  transform: scale(1.05) translateZ(0);
+}
+
+@media (max-width: 725px) {
+  .card {
+    width: 100%;
+  }
+}
+
+
+.wrap {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  border-radius: 50px;
+  border: none;
+  font-size: 15px;
+  background-color: #641c1c;
+  transition: 0.3s;
+  padding: 4px 15px;
+  color: #fff;
+  text-decoration: none;
+}
+
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #531717;
+}

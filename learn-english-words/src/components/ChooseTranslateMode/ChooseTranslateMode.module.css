@@ -1,0 +1,40 @@
+
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    color: #fff;
+}
+
+.nowWord {
+    color: white;
+    font-size: 40px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 35%;
+    justify-content: center;
+}
+
+.check {
+    padding-left: 15px;
+    font-size: 35px;
+}
+
+svg[data-icon="check"] {
+    color: green;
+}
+
+svg[data-icon="xmark"] {
+    color: red;
+    font-size: 35px;
+}

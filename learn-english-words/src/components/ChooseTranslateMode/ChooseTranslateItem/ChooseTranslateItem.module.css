@@ -1,0 +1,17 @@
+
+.cards_item {
+    width: 200px;
+    height: 200px;
+    background-color: #248d30;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    font-size: 1.5em;
+}
+
+.cards_item:hover {
+    cursor: pointer;
+    background-color: green;
+}

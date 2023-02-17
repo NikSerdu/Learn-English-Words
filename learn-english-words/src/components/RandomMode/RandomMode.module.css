@@ -1,0 +1,70 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+
+.back {
+    padding: 5px 10px;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.back svg {
+    margin-top: 20px;
+}
+
+.back:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.nowWord {
+    font-size: 40px;
+}
+
+.entryField {
+    display: flex;
+    align-items: center;
+}
+
+
+input.readWord {
+    width: 100%;
+    border-radius: 50px;
+    border: none;
+    padding: 20px 20px;
+    outline: none;
+    font-size: 20px;
+}
+
+
+
+.check {
+    padding-left: 15px;
+    font-size: 35px;
+}
+
+svg[data-icon="check"] {
+    color: green;
+}
+
+svg[data-icon="xmark"] {
+    color: red;
+}
+
+.trueWord {
+    font-size: 30px;
+}
+
+.results {
+    font-size: 25px;
+}

@@ -1,0 +1,22 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 15px;
+  margin: 0 auto;
+}
+
+.dictionary {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dictionary img {
+  margin: 20px 20px 0px 0px;
+  transition: 0.5s;
+}
+
+.dictionary:hover img {
+  transform: scale(1.05) translateZ(0);
+}
