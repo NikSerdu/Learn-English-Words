@@ -56,8 +56,8 @@ export const DictionariesList = () => {
             return (
               <DictionaryCard
                 key={elem.id}
-                link={`dictionary/${elem.group_name}/${elem.id}`}
-                text={elem.group_name}
+                link={`dictionary/${elem.dictionary_name}/${elem.id}`}
+                text={elem.dictionary_name}
                 id={elem.id}
                 deleteGroup={deleteDictionary}
                 learn_group_id={learn_group_id}

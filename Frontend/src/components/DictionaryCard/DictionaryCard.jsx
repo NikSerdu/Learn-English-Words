@@ -18,7 +18,7 @@ function DictionaryCard(props) {
   return (
     <div className={color}>
       <NavLink to={props.link}>
-        <div className={styles.card__label}>Group of words</div>
+        <div className={styles.card__label}>Dictionary</div>
         <p className={styles.card__header}>{props.text}</p>
       </NavLink>
       <div className={styles.wrap}>

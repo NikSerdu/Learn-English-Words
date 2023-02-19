@@ -86,7 +86,7 @@ exports.deleteWord = (req, res) => {
         response.status(400, error, res);
       } else {
         const word_id = req.body.word_id;
-        const sql = `DELETE FROM word_group WHERE word_id=?`;
+        const sql = `DELETE FROM word_dictionary WHERE word_id=?`;
         db.query(sql, word_id, (error, results) => {
           if (error) {
             response.status(400, error, res);

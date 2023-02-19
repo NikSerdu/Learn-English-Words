@@ -8,13 +8,10 @@ import { NavLink } from "react-router-dom";
 import { reset } from "../../actions/eng-rus-random";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 function MainPage(params) {
-  const isChangeWords = useSelector((state) => state.dictionary.isChange);
   const [learn_group_id] = useLocalStorage('learn_group_id',1)
   const dispatch = useDispatch();
   useEffect(() => {
-    if (isChangeWords) {
-      dispatch(getWords(learn_group_id));
-    }
+    dispatch(getWords(learn_group_id));
     dispatch(reset())
   }, []);
   return (
@@ -28,7 +25,8 @@ function MainPage(params) {
         <ButtonMode link="/eng-rus" text="ENG RUS" violet={true} />
         <ButtonMode link="/rus-eng" text="RUS ENG" orange={true} />
         <ButtonMode link="/random" text="RANDOM WORDS" />
-        <ButtonMode link="/choose-translate" text="CHOOSE TRANSLATE" violet={true} />
+        <ButtonMode link="/choose-translate-on-rus" text="CHOOSE RUSSIAN TRANSLATE" violet={true} />
+        <ButtonMode link="/choose-translate-on-eng" text="CHOOSE ENGLISH TRANSLATE" />
       </div>
     </>
   );

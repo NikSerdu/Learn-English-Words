@@ -10,7 +10,8 @@ import { Results } from "./pages/ResultsPage/ResultsPage";
 import { DictionariesPage } from "./pages/DictionariesPage/DictionariesPage";
 import { DictionariesList } from "./pages/DictionariesPage/DictionariesList/DictionariesList";
 import { RandomPage } from "./pages/RandomPage/RandomPage";
-import { ChooseTranslatePage } from "./pages/ChooseTranslatePage/ChooseTranslatePage";
+import { ChooseTranslateOnRus } from "./pages/ChooseTranslateOnRus/ChooseTranslateOnRus";
+import { ChooseTranslateOnEng } from "./pages/ChooseTranslateOnEng/ChooseTranslateOnEng";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
             <Route path="/eng-rus" element={<EngRusPage />}/>
             <Route path="/rus-eng" element={<RusEngPage />}/>
             <Route path="/random" element={<RandomPage />}/>
-            <Route path="/choose-translate" element={<ChooseTranslatePage />}/>
+            <Route path="/choose-translate-on-rus" element={<ChooseTranslateOnRus />}/>
+            <Route path="/choose-translate-on-eng" element={<ChooseTranslateOnEng />}/>
             <Route path="/dictionaries" element={<DictionariesPage />}>
               <Route index element={<DictionariesList />}/>
               <Route path="dictionary/:dictionary_name/:dictionary_id" element={<Dictionary />}/>

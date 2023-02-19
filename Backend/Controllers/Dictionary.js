@@ -4,7 +4,7 @@ const db = require("../settings/db");
 exports.getWordsOfDictionary = (req, res) => {
   const dictionary_id = req.query.dictionary_id;
   if (dictionary_id !== "2" && dictionary_id !== "1") {
-    const sql = `SELECT id,word,translate,is_favourite FROM (SELECT word_list.id, word_list.word, word_list.translate, groups.id AS group_id, word_list.is_favourite FROM word_group LEFT JOIN word_list ON (word_list.id = word_group.word_id) LEFT JOIN groups ON (groups.id = word_group.group_id)) AS new_table WHERE group_id=?`;
+    const sql = `SELECT id,word,translate,is_favourite FROM (SELECT word_list.id, word_list.word, word_list.translate, dictionaries.id AS dictionary_id, word_list.is_favourite FROM word_dictionary LEFT JOIN word_list ON (word_list.id = word_dictionary.word_id) LEFT JOIN dictionaries ON (dictionaries.id = word_dictionary.dictionary_id)) AS new_table WHERE dictionary_id=?`;
     db.query(sql, dictionary_id, (error, rows) => {
       if (error) {
         response.status(400, error, res);
@@ -45,7 +45,7 @@ exports.addWordInDictionary = (req, res) => {
         response.status(400, error, res);
       } else if (typeof rows !== "undefined" && rows.length > 0) {
         const sql =
-          "INSERT INTO `word_group` (word_id, group_id) VALUES ((SELECT id FROM `word_list` WHERE word = ? ),?)";
+          "INSERT INTO `word_dictionary` (word_id, dictionary_id) VALUES ((SELECT id FROM `word_list` WHERE word = ? ),?)";
         db.query(sql, [word, dictionary_id], (error, results) => {
           if (error) {
             response.status(400, error, res);
@@ -64,7 +64,7 @@ exports.addWordInDictionary = (req, res) => {
             response.status(400, error, res);
           } else {
             const sql =
-              "INSERT INTO `word_group` (word_id, group_id) VALUES ((SELECT id FROM `word_list` WHERE word = ? ),?)";
+              "INSERT INTO `word_dictionary` (word_id, dictionary_id) VALUES ((SELECT id FROM `word_list` WHERE word = ? ),?)";
             db.query(sql, [word, dictionary_id], (error, results) => {
               if (error) {
                 response.status(400, error, res);
@@ -85,21 +85,21 @@ exports.addWordInDictionary = (req, res) => {
 
 exports.deleteWordFromDictionary = (req, res) => {
   db.query(
-    "SELECT `word_id`, `group_id` FROM `word_group` ",
+    "SELECT `word_id`, `dictionary_id` FROM `word_dictionary` ",
     (error, rows, fields) => {
       if (error) {
         response.status(400, error, res);
       } else {
         const word_id = req.body.word_id;
         const dictionary_id = req.body.dictionary_id;
-        const sql = `DELETE FROM word_group WHERE word_id=? and group_id=?`;
+        const sql = `DELETE FROM word_dictionary WHERE word_id=? and dictionary_id=?`;
         db.query(sql, [word_id, dictionary_id], (error, results) => {
           if (error) {
             response.status(400, error, res);
           } else {
             response.status(
               200,
-              { message: `Слово успешно удалено из группы!`, results },
+              { message: `Слово успешно удалено из словаря!`, results },
               res
             );
           }
