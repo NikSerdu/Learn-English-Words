@@ -1,27 +1,20 @@
 module.exports = (app) => {
-  const getController = require("../Controller/GetController");
-  const postController = require("../Controller/PostController");
-  const putController = require("../Controller/PutController");
-  const deleteController = require("../Controller/DeleteController");
-  //MYWORDS
-  //Get all words
-  app.route("/getWords").get(getController.getAllWords);
-  //Add a new word
-  app.route("/addWord").post(postController.addWord);
-  //Add word in group
-  app.route("/addWordInGroup").post(postController.addWordInGroup);
-  //Add new group
-  app.route("/addNewGroup").post(postController.addNewGroup);
-  //Delete word
-  app.route("/deleteWord").delete(deleteController.deleteWord);
-  //Delete word from group
-  app.route("/deleteWordFromGroup").delete(deleteController.deleteWordFromGroup);
-  //Delete group
-  app.route("/deleteGroup").delete(deleteController.deleteGroup);
-  //Update word
-  app.route("/isFavourite").put(putController.isFavourite);
-  //Get all groups
-  app.route("/getGroups").get(getController.getGroups);
-  //Get words in group
-  app.route("/getWordsInGroup").get(getController.getWordsInGroup);
+  const allWordsController = require('../Controllers/AllWords')
+  const dictionariesController = require('../Controllers/Dictionaries')
+  const dictionaryController = require('../Controllers/Dictionary')
+  //All words
+  app.route("/getWords").get(allWordsController.getAllWords);
+  app.route("/addWord").post(allWordsController.addWord);
+  app.route("/deleteWord").delete(allWordsController.deleteWord);
+  app.route("/toggleFavourite").put(allWordsController.toggleFavourite);
+
+  //Dictionaries
+  app.route("/getDictionaries").get(dictionariesController.getDictionaries);
+  app.route("/addNewDictionary").post(dictionariesController.addNewDictionary);
+  app.route("/deleteDictionary").delete(dictionariesController.deleteDictionary);
+
+  //Dictionary
+  app.route("/getWordsOfDictionary").get(dictionaryController.getWordsOfDictionary);
+  app.route("/addWordInDictionary").post(dictionaryController.addWordInDictionary);
+  app.route("/deleteWordFromDictionary").delete(dictionaryController.deleteWordFromDictionary);
 };
