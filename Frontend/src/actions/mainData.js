@@ -1,6 +1,6 @@
 import axios from "axios";
 import {
-  getWordsActionCreater,
+  getWordsActionCreater, setStartNumberOfWordActionCreater,
 } from "../redux/reducers/mainData-reducer";
 
 export const getWords = (dictionary_id) => {
@@ -12,4 +12,6 @@ export const getWords = (dictionary_id) => {
   };
 };
 
-
+export const setStartNumberOfWord = (number) => {
+  return (dispatch) => {dispatch(setStartNumberOfWordActionCreater(number))};
+};

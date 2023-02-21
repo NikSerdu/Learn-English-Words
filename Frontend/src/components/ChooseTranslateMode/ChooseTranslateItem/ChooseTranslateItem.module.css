@@ -15,3 +15,17 @@
     cursor: pointer;
     background-color: green;
 }
+
+@media (max-width: 425px) {
+    .cards_item {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 350px) {
+    .cards_item {
+        width: 120px;
+        height: 120px;
+    }
+}

@@ -9,6 +9,7 @@
 
 .header {
     color: #fff;
+    margin-top: 10px;
 }
 
 .nowWord {
@@ -21,7 +22,7 @@
     flex-wrap: wrap;
     column-gap: 10px;
     row-gap: 10px;
-    width: 35%;
+    width: 420px;
     justify-content: center;
 }
 
@@ -37,4 +38,10 @@ svg[data-icon="check"] {
 svg[data-icon="xmark"] {
     color: red;
     font-size: 35px;
+}
+
+@media (max-width: 425px) {
+    .cards {
+        width: auto;
+    }
 }

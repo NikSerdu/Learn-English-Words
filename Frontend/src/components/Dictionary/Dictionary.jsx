@@ -27,7 +27,7 @@ export const Dictionary = () => {
   return (
     <>
       <ToBack />
-      <div className={styles.vocabulary}>
+      <div className={styles.dictionary}>
         <h1>{dictionary_name.toUpperCase()}</h1>
         <Table
           words={words}

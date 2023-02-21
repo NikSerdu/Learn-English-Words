@@ -1,3 +1,9 @@
-.vocabulary {
+.dictionary {
     padding: 20px 50px;
+}
+
+@media (max-width: 768px) {
+    .dictionary {
+        padding: 0;
+    }
 }
