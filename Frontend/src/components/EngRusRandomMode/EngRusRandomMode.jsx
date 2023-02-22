@@ -32,9 +32,9 @@ function EngRusRandomMode({
   const [text, setText] = useState("");
 
   const handlerCheckWord = (e) => {
-    if (e.code === "Enter") {
-      dispatch(checkWord(text,translate));
-      if (text !== translate) {
+    if (e.code === "Enter" || e.key === 'Enter') {
+      dispatch(checkWord(text.trim(),translate.toLowerCase()));
+      if (text.trim() !== translate.toLowerCase()) {
         dispatch(addWrongWord(words[numberOfWord]))
       }
       if (numberOfWord + 1 < words.length) {
@@ -57,7 +57,7 @@ function EngRusRandomMode({
         <div className={styles.entryField}>
           <input
             onKeyDown={handlerCheckWord}
-            onChange={(e) => setText(e.target.value)}
+            onChange={(e) => setText(e.target.value.toLowerCase())}
             value={text}
             className={styles.readWord}
             type="text"

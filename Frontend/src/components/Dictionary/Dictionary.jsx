@@ -18,12 +18,16 @@ import { useParams } from "react-router-dom";
 import { ToBack } from "../ToBack/ToBack";
 
 export const Dictionary = () => {
+  console.log('123')
+  const isChangeWords = useSelector(state => state.dictionary.isChange)
+  const isChangeFavourite = useSelector(state => state.favourites.isChange)
   const { dictionary_name, dictionary_id } = useParams();
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(dictionary_id !== "1" ? getWordsInDictionary(dictionary_id) : getAllWords());
-  });
   const words = useSelector((state) => state.dictionary.words);
+  useEffect(() => {
+    console.log(123)
+    dispatch(dictionary_id !== "1" ? getWordsInDictionary(dictionary_id) : getAllWords());
+  },[isChangeWords,isChangeFavourite]);
   return (
     <>
       <ToBack />

@@ -29,7 +29,6 @@ export const addWord = (word, translate) => {
   return (dispatch) => {
     axios.post("/addWord", { word, translate },).then((res) => {
       dispatch(addWordActionCreater(word, translate));
-      console.log(res.data.values.message)
     }).catch((res) => {console.log(res.response.data.values.message)});
   };
 };
@@ -38,7 +37,6 @@ export const addWordInDictionary = (word, translate,dictionary_id) => {
   return (dispatch) => {
     axios.post("/addWordInDictionary", { word, translate,dictionary_id },).then((res) => {
       dispatch(addWordInDictionaryActionCreater());
-      console.log(res.data.values.message)
     }).catch((res) => {console.log(res.response.data.values.message)});
   };
 };
@@ -49,7 +47,6 @@ export const deleteWord = (word_id) => {
   return (dispatch) => {
     axios.delete("/deleteWord", { data: { word_id } },).then((res) => {
       dispatch(deleteWordActionCreater());
-      console.log(res.data.values.message)
     }).catch((res) => {console.log(res.response.data.values.message)});
   };
 };
@@ -58,7 +55,6 @@ export const deleteWordFromDictionary = (word_id,dictionary_id) => {
   return (dispatch) => {
     axios.delete("/deleteWordFromDictionary", { data: { word_id,dictionary_id } },).then((res) => {
       dispatch(deleteWordActionCreater());
-      console.log(res.data.values.message)
     }).catch((res) => {console.log(res.response.data.values.message)});
   };
 };
