@@ -37,7 +37,7 @@ export const DictionariesList = () => {
     <>
       {showPopup ? <Popup closePopup={() => {togglePopup(!showPopup)}}>
         <div className="form">
-          <h1>Add new group</h1>
+          <h1>Add a new group</h1>
           <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter group name"/>
           <div className={styles.btn} onClick={handlerAddNewGroup}>Add</div>
         </div>

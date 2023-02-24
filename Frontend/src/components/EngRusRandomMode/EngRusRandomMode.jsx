@@ -6,6 +6,8 @@ import { faCheck, faXmark, faQuestion } from "@fortawesome/free-solid-svg-icons"
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { ToHome } from "../ToHome/ToHome";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { Count } from "../Count/Count";
 
 
 function EngRusRandomMode({
@@ -22,19 +24,18 @@ function EngRusRandomMode({
 }) {
 
   const dispatch = useDispatch();
-
+  const [number, setNumber] = useState(1)
   useEffect(() => {
     dispatch(setNowWord(words[numberOfWord].word,words[numberOfWord].translate));
   },[]);
 
   const redirect = useNavigate()
-
   const [text, setText] = useState("");
-
+  const [startNumber] = useLocalStorage("start_number_of_word");
   const handlerCheckWord = (e) => {
     if (e.code === "Enter" || e.key === 'Enter') {
-      dispatch(checkWord(text.trim(),translate.toLowerCase()));
-      if (text.trim() !== translate.toLowerCase()) {
+      dispatch(checkWord(text.trim().toLowerCase(),translate.toLowerCase()));
+      if (text.trim().toLowerCase() !== translate.toLowerCase()) {
         dispatch(addWrongWord(words[numberOfWord]))
       }
       if (numberOfWord + 1 < words.length) {
@@ -44,6 +45,7 @@ function EngRusRandomMode({
       } else {
         redirect('/results')
       }
+      setNumber(number => number + 1)
     }
   };
 
@@ -52,12 +54,13 @@ function EngRusRandomMode({
   return (
     <div>
       <ToHome reset={reset}/>
+      <Count number={number} startNumber={startNumber}/>
       <div className={styles.wrap}>
         <p className={styles.nowWord}>{word}</p>
         <div className={styles.entryField}>
           <input
             onKeyDown={handlerCheckWord}
-            onChange={(e) => setText(e.target.value.toLowerCase())}
+            onChange={(e) => setText(e.target.value)}
             value={text}
             className={styles.readWord}
             type="text"

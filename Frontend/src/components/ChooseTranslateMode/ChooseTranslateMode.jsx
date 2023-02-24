@@ -1,8 +1,10 @@
 import { faCheck, faQuestion, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { Count } from "../Count/Count";
 import { ToHome } from "../ToHome/ToHome";
 import { ChooseTranslateItem } from "./ChooseTranslateItem/ChooseTranslateItem";
 import styles from "./ChooseTranslateMode.module.css";
@@ -21,6 +23,8 @@ export const ChooseTranslateMode = ({
 }) => {
   const dispatch = useDispatch();
   const redirect = useNavigate()
+  const [number, setNumber] = useState(1)
+  const [startNumber] = useLocalStorage("start_number_of_word");
   useEffect(() => {
     dispatch(
       setNowWord(words[numberOfWord].word, words[numberOfWord].translate)
@@ -44,11 +48,13 @@ export const ChooseTranslateMode = ({
       } else {
         redirect("/results");
       }
+      setNumber(number => number + 1)
   };
 
   return (
     <>
     <ToHome reset={reset} />
+    <Count number={number} startNumber={startNumber}/>
     <div className={styles.wrap}>
       <div className={styles.header}>Выберите правильный перевод</div>
       <p className={styles.nowWord}>{word}

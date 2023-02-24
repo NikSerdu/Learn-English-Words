@@ -7,25 +7,8 @@
 }
 
 
-.back {
-    padding: 5px 10px;
-    text-align: center;
-    border: 1px solid #fff;
-    border-radius: 50px;
-    margin-top: 10px;
-    margin-left: 10px;
-    color: #fff;
-    transition: 0.3s;
-}
 
-.back svg {
-    margin-top: 20px;
-}
 
-.back:hover {
-    background-color: #fff;
-    color: #000;
-}
 
 .nowWord {
     font-size: 40px;
