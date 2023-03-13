@@ -17,12 +17,15 @@
 }
 
 .table thead tr th:first-child {
+    width: 10px;
+    text-align: center;
     border-radius: 8px 0 0 8px;
 }
 
 
 .table thead tr th:last-child {
     border-radius: 0 8px 8px 0;
+    text-align: center;
     width: 90px;
 }
 
@@ -50,4 +53,3 @@
     flex-wrap: wrap;
     column-gap:10px;
 }
-

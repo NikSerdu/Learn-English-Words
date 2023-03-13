@@ -9,6 +9,7 @@ import styles from "./TableItem.module.css";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 export const TableItem = ({
+  index,
   id,
   word,
   translate,
@@ -16,7 +17,7 @@ export const TableItem = ({
   isResults,
   deleteWord,
   deleteWordFromDictionary,
-  changeFavourite
+  changeFavourite,
 }) => {
   const dispatch = useDispatch();
   const {dictionary_name, dictionary_id} = useParams()
@@ -35,11 +36,12 @@ export const TableItem = ({
   };
   return (
     <tr>
+      <td>{index+1}</td>
       <td>{word}</td>
       <td>{translate}</td>
       <td>
         {!isResults && dictionary_id !== '2' && (
-          <FontAwesomeIcon icon={faXmark} onClick={handlerDeleteWord} title="Удалить слово полностью"/>
+          <FontAwesomeIcon icon={faXmark} onClick={handlerDeleteWord} title="Удалить слово полностью" className={styles.xmark}/>
         )}
         {!isResults && (
           <FontAwesomeIcon
@@ -49,7 +51,7 @@ export const TableItem = ({
           />
         )}
         {!isResults && dictionary_id !== '1' && dictionary_id !== '2' && (
-          <FontAwesomeIcon icon={faXmark} onClick={handlerDeleteWordFromDictionary} title="Удалить из группы"/>
+          <FontAwesomeIcon icon={faXmark} onClick={handlerDeleteWordFromDictionary} title="Удалить из группы" className={styles.xmark}/>
         )}
       </td>
     </tr>

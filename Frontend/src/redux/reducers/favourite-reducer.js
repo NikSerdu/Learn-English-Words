@@ -17,7 +17,7 @@ export const favouriteReducer = (state = initialState, action) => {
     case UPDATE_WORD:
       return {
         ...state,
-        isChange: true
+        isChange: !state.isChange
       }
     default:
       return state;

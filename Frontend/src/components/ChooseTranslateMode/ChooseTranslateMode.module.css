@@ -35,10 +35,7 @@ svg[data-icon="check"] {
     color: green;
 }
 
-svg[data-icon="xmark"] {
-    color: red;
-    font-size: 35px;
-}
+
 
 @media (max-width: 425px) {
     .cards {

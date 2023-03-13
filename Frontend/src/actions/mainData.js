@@ -10,7 +10,3 @@ export const getWords = (dictionary_id) => {
     });
   };
 };
-
-export const setStartNumberOfWord = (number) => {
-  return (dispatch) => {dispatch(setStartNumberOfWordActionCreater(number))};
-};

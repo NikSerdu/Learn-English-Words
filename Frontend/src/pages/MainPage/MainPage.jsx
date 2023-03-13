@@ -24,7 +24,7 @@ function MainPage() {
   }, []);
 
   useEffect(() => {
-    const n = words_length - Number(startNumber);
+    const n = Number(startNumber) > words_length ? words_length : words_length - Number(startNumber);
     dispatch(changeNumberOfWord(n));
   });
   return (

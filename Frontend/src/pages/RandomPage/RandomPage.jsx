@@ -18,8 +18,8 @@ export const RandomPage = () => {
   const numberOfWord = useSelector((state) => state.engRusRandom.numberOfWord);
   return (
     <EngRusRandomMode
-      word={nowEngWord}
-      translate={nowRusWord}
+      word={nowRusWord}
+      translate={nowEngWord}
       numberOfWord={numberOfWord}
       isRight={isRight}
       words={words}

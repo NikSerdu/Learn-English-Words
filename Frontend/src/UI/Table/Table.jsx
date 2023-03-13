@@ -7,15 +7,17 @@ export const Table = ({words, isResults ,deleteWord, deleteWordFromDictionary, c
     <table className={styles.table}>
         <thead>
           <tr>
+            <th>ID</th>
             <th>Word</th>
             <th>Translate</th>
-            <th></th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {words.map((item) => {
+          {words.map((item,index) => {
             return (
               <TableItem
+                index={index}
                 id={item.id}
                 key={item.id}
                 word={item.word}

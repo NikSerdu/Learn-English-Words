@@ -1,10 +1,14 @@
-svg[data-icon="xmark"] {
+.xmark {
     font-size: 1.9em;
 }
 
 svg[data-icon="star"] {
     font-size: 1.5em;
     color: yellow;
+}
+
+tr td:first-child {
+    text-align: center;
 }
 
 
@@ -15,4 +19,16 @@ svg {
 svg:hover {
     cursor: pointer;
     transform: scale(1.05) translateZ(0);
+}
+
+
+@media (max-width: 427px) {
+    .xmark {
+        font-size: 1.8em;
+    }
+    
+    svg[data-icon="star"] {
+        font-size: 1.8em;
+        padding: 5px 0px;
+    }
 }
