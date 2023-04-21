@@ -44,19 +44,35 @@ exports.addWordInDictionary = (req, res) => {
       if (error) {
         response.status(400, error, res);
       } else if (typeof rows !== "undefined" && rows.length > 0) {
-        const sql =
-          "INSERT INTO `word_dictionary` (word_id, dictionary_id) VALUES ((SELECT id FROM `word_list` WHERE word = ? ),?)";
-        db.query(sql, [word, dictionary_id], (error, results) => {
-          if (error) {
-            response.status(400, error, res);
-          } else {
-            response.status(
-              200,
-              { message: `Слово успешно добавлено!`, results },
-              res
-            );
+        db.query(
+          "SELECT word_id FROM `word_dictionary` WHERE word_id=(SELECT id FROM `word_list` WHERE word = ? ) and dictionary_id= ?",
+          [word, dictionary_id],
+          (error, rows, results) => {
+            if (error) {
+              response.status(400, error, res);
+            } else if (typeof rows !== "undefined" && rows.length > 0) {
+              response.status(
+                200,
+                { message: `Слово уже существует в этой группе!`, results },
+                res
+              );
+            } else {
+              const sql =
+                "INSERT INTO `word_dictionary` (word_id, dictionary_id) VALUES ((SELECT id FROM `word_list` WHERE word = ? ),?)";
+              db.query(sql, [word, dictionary_id], (error, results) => {
+                if (error) {
+                  response.status(400, error, res);
+                } else {
+                  response.status(
+                    200,
+                    { message: `Слово успешно добавлено!`, results },
+                    res
+                  );
+                }
+              });
+            }
           }
-        });
+        );
       } else {
         const sql = "INSERT INTO `word_list` (word,translate) VALUES(?,?)";
         db.query(sql, [word, translate], (error, results) => {
